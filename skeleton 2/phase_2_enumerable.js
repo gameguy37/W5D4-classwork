@@ -12,13 +12,15 @@ const func = (num) => {
 
 Array.prototype.myMap = function (cb) {
     let mapped = [];
-    for (let i = 0; i < this.length; i++) {
-        mapped.push(cb(this[i]));
-    }
+
+    this.myEach(function(ele) {
+        mapped.push(cb(ele));
+    });
+
     return mapped;
 };
 
-console.log(arr3.myMap(func));
+// console.log(arr3.myMap(func));
 
 Array.prototype.myReduce = function (cb, iv) {
 
@@ -28,8 +30,8 @@ Array.prototype.myReduce = function (cb, iv) {
     }
 
     let result = newArray[0];
-    
-    newArray.slice(1).myEach( function(ele) {
+
+    newArray.slice(1).myEach(function(ele) {
         result = cb(result, ele);
     });
     return result;
@@ -43,10 +45,10 @@ const cb2 = (acc, el) => {
     return acc * el;
 };
 
-console.log(arr3.myReduce(cb1));
-console.log(arr3.myReduce(cb1, 10));
-console.log(arr3.myReduce(cb2));
-console.log(arr3.myReduce(cb2, 2));
+// console.log(arr3.myReduce(cb1));
+// console.log(arr3.myReduce(cb1, 10));
+// console.log(arr3.myReduce(cb2));
+// console.log(arr3.myReduce(cb2, 2));
 
 
 
